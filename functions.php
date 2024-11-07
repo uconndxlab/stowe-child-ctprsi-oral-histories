@@ -1,7 +1,5 @@
 <?php
 
-require_once 'inc/acf.php';
-
 function link_parent_theme_style()
 {
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
@@ -95,8 +93,4 @@ function beecher_stowe_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'beecher_stowe_scripts', 50);
-
-
-
-
 
