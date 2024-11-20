@@ -8,7 +8,182 @@
 @import url(../beecher-stowe/css/bs-color-husky-blue.css);
 @import url(../beecher-stowe/css/bs-font-compressed.css);
 
-body {
-    background-color:red!important;
+/* filter box */
+.stories-filter-item{
+    list-style-type: none;
 }
 
+.stories-filter{
+    padding-left:0px;
+}
+
+/* CUSTOM CHECKBOXES /*
+  /* The container */
+  .checkbox-contain {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-bottom: 2px;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .checkbox-contain input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #e0e0e0;
+  }
+  
+  /* On mouse-over, add a background color */
+  .checkbox-contain:hover input~.checkmark {
+    background-color: #000;
+  }
+  
+  /* When the checkbox is checked, add a background color */
+  .checkbox-contain input:checked~.checkmark {
+    background-color: #000;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .checkbox-contain input:checked~.checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .checkbox-contain .checkmark:after {
+    left: 8px;
+    top: 3px;
+    width: 5px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+/* story side */
+.story-photo-wrap img{
+    height:200px;
+    filter: gray;
+    -webkit-filter: grayscale(1); 
+    -webkit-transition: all .5s ease-in-out;  
+    transition: all .5s ease-in-out;  
+}
+
+.story-photo{
+    width:100%;
+    object-fit:cover;
+}
+
+.story-details h3{
+    margin-top:10px;
+    margin-bottom:0px;
+}
+
+.stories-element{
+    margin-top:10px;
+    margin-bottom:20px;
+    width:100%;
+    color:#000;
+}
+
+.stories-element:hover{
+    text-decoration:none;
+    color:#000;
+}
+
+.stories-element:hover img{
+    text-decoration:none;
+    filter: none;
+    -webkit-filter: grayscale(0);
+}
+
+@media (min-width: 768px) {
+    .stories-wrap {
+        width:100%;
+        grid-template-columns: repeat(auto-fill, 49%);
+        display: grid;
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 992px) {
+    .stories-wrap {
+        grid-template-columns: repeat(auto-fill, 32%);
+        display: grid;
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 1200px) {
+    .stories-wrap {
+        width:75%;
+    }
+}
+
+.row:before, .row:after {
+    display: none;
+}
+
+.stories-element:hover{
+    text-decoration:none;
+}
+
+/*tags*/
+.story-category-wrap{
+    width:fit-content;
+}
+
+.story-tag{
+    border:1px solid;
+    border-radius:5px;
+    padding:0px 5px;
+}
+
+.tag-orange{
+    color:#492901;
+    background-color:#faebdd;
+    border-color:#A9610C;
+}
+
+.tag-blue{
+    color:#001047;
+    background-color:#DCEBFF;
+    border-color:#1044BE;
+}
+
+.tag-pink{
+    color:#4B002E;
+    background-color:#FFE7F2;
+    border-color:#C82470;
+}
+
+.tag-green{
+    color:#0C2700;
+    background-color:#EDF3E0;
+    border-color:#718C06;
+}
