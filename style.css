@@ -90,7 +90,7 @@
     height:200px;
     filter: gray;
     -webkit-filter: grayscale(1); 
-    -webkit-transition: all .5s ease-in-out;  
+    -webkit-transition: all .3s ease-in-out;  
     transition: all .5s ease-in-out;  
 }
 
@@ -186,4 +186,10 @@
     color:#0C2700;
     background-color:#EDF3E0;
     border-color:#718C06;
+}
+
+/*loading*/
+.htmx-request{
+    opacity:0.5;
+    filter: blur(1px)
 }

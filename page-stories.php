@@ -46,7 +46,7 @@ $oral_histories = new WP_Query($args);
     <!-- START TEST AREA -->
     <div class="col-lg-3 stories-filter">
     <h4>Filter by Category:</h4>
-    <form method="GET" action="" id="category-filter-form">
+    <form method="GET" action="" id="category-filter-form" hx-get="" hx-trigger="change" hx-target=".stories-wrap" hx-select=".stories-wrap" hx-swap="outerHTML" hx-indicator=".stories-wrap">
         <ul style="padding-left:0px">
             <?php
             // Define the taxonomy for 'story-category' and fetch the terms
@@ -86,20 +86,6 @@ $oral_histories = new WP_Query($args);
     </form>
 </div>
 
-<!-- JavaScript to Submit the Form on Checkbox Change -->
-<script>
-    // Wait until the page is fully loaded
-    document.addEventListener('DOMContentLoaded', function () {
-        const checkboxes = document.querySelectorAll('.category-filter-checkbox');
-
-        checkboxes.forEach(function (checkbox) {
-            checkbox.addEventListener('change', function () {
-                document.getElementById('category-filter-form').submit();
-            });
-        });
-    });
-</script>
-
 
 <!-- END TEST AREA -->
         <div class="col-lg-9 stories-wrap stories row">
@@ -128,13 +114,14 @@ $oral_histories = new WP_Query($args);
                     $story_date = get_the_date();
                     $story_title = get_the_title();
                     $story_content = get_the_excerpt();
+                    $story_link = get_the_permalink();
                     // quote is a custom field
                     $quote = get_field('quote');
 
             ?>
 
 
-                    <a class="stories-element" href="#">
+                    <a class="stories-element" href="<?php echo $story_link; ?>">
                         <div class="story-photo-wrap">
                             <img class="story-photo" src="<?php echo $story_photo; ?>" width="100%" height="200px" 
                             alt="<?php echo $story_photo_alt; ?>">
@@ -206,54 +193,6 @@ $oral_histories = new WP_Query($args);
             </div>
         </div>
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-
-            function isElementInViewport(el) {
-                const rect = el.getBoundingClientRect();
-                return (
-                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 && // Adjust this value for sooner activation
-                    rect.bottom >= 0
-                );
-            }
-
-            function checkElements() {
-                const elements = document.querySelectorAll('.stories-element');
-
-                console.log('checking elements');
-                elements.forEach(function(el) {
-                    if (isElementInViewport(el)) {
-
-                        var details = el.querySelector('.story-details');
-                        var photo = el.querySelector('.story-photo');
-
-                        details.style.opacity = 1;
-                        details.style.transform = 'translateX(0)'; // Reset to the neutral position
-
-                        photo.style.opacity = 1;
-                        photo.style.transform = 'translateX(0)'; // Reset to the neutral position
-                    }
-                });
-            }
-
-            window.addEventListener('scroll', checkElements);
-            window.addEventListener('resize', checkElements);
-
-            // Initial check
-            checkElements();
-
-            // when filter h4 is clicked, toggle the class active on .stories-filter
-            // document.querySelector('.stories-filter h4').addEventListener('click', function() {
-            //     document.querySelector('.stories-filter').classList.toggle('active');
-            // });
-
-            document.addEventListener('htmx:afterSwap', function(evt) {
-                // after the swap is complete, check the elements again
-                checkElements();
-            });
-        });
-    </script>
 
 </section>
 

@@ -94,3 +94,11 @@ function beecher_stowe_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'beecher_stowe_scripts', 50);
 
+// enqueue scripts htmx cdn
+add_action('wp_enqueue_scripts', 'stowe_child_oral_histories_enqueue_scripts');
+
+function stowe_child_oral_histories_enqueue_scripts()
+{
+    wp_enqueue_script('htmx', 'https://unpkg.com/htmx.org/dist/htmx.min.js', array(), STOWE_CHILD_ORAL_HISTORIES, true);
+}
+
