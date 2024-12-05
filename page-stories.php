@@ -98,7 +98,9 @@ $oral_histories = new WP_Query($args);
                     $oral_histories->the_post();
                     // get the featured image and caption
                     $story_photo = get_the_post_thumbnail_url(get_the_ID(), 'full');
-                    $story_photo_alt = get_post(get_post_thumbnail_id())->post_excerpt;
+                    $thumbnail_id = get_post_thumbnail_id( $post->ID );
+                    $story_photo_alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+
 
                     $story_categories = array();
                     // the tags are custom taxonomy story-category
@@ -117,6 +119,8 @@ $oral_histories = new WP_Query($args);
                     $story_link = get_the_permalink();
                     // quote is a custom field
                     $quote = get_field('quote');
+                    $name = get_field('name');
+
 
             ?>
 
@@ -128,8 +132,8 @@ $oral_histories = new WP_Query($args);
 
                         </div>
                         <div class="story-details">
-                            <h3><?php echo $story_title; ?></h3>
-                            <p>
+                            <h3><?php echo $name; ?></h3>
+                            <p style="font-style:italic">
                                 <?php echo $quote; ?>
                             </p>
                             <p><?php echo $story_content; ?></p>

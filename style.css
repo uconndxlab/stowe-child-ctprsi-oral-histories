@@ -7,6 +7,7 @@
 */
 @import url(../beecher-stowe/css/bs-color-husky-blue.css);
 @import url(../beecher-stowe/css/bs-font-compressed.css);
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 /* filter box */
 .stories-filter-item{
@@ -129,6 +130,9 @@
         display: grid;
         justify-content: space-between;
     }
+    .sentence-sum{
+        width:50%;
+    }
 }
 
 @media (min-width: 992px) {
@@ -142,6 +146,9 @@
 @media (min-width: 1200px) {
     .stories-wrap {
         width:75%;
+    }
+    .stories-wrap.related {
+        width:100%;
     }
 }
 
@@ -192,4 +199,71 @@
 .htmx-request{
     opacity:0.5;
     filter: blur(1px)
+}
+
+/*person page*/
+#nav-person, #nav-person a{
+    border:0px;
+    font-weight:600;
+    color:#757575;
+}
+
+#nav-person{
+    display:flex;
+    justify-content: space-between;
+}
+
+#nav-person a{
+    text-align:center;
+    border-radius:0px;
+}
+
+#nav-person li{
+    border-bottom:3px solid #eee;
+    width:100%;
+}
+
+#nav-person li.active{
+    border-bottom:3px solid #000;
+}
+
+#nav-person li.active a{
+    color:#000;
+}
+
+.block-quote{
+    border-left:3px solid black;
+    background:#eeeeee;
+    padding:10px;
+    margin:20px 0px;
+}
+
+.block-quote p{
+    font-size:22px;
+    font-family:"Playfair Display",sans-serif;
+    font-style: italic;
+    margin-bottom:0px;
+    font-weight:500;
+}
+
+.gallery-photo{
+    height:100%;
+    padding-bottom:20px;
+}
+
+.person-videos{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+
+.person-videos iframe{
+    width:100%;
+    margin-bottom:2%;
+}
+
+@media (min-width: 768px) {
+    .person-videos iframe{
+        width:49%;
+    }
 }
