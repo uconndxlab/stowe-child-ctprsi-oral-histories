@@ -65,7 +65,7 @@ get_header(); ?>
 <!-- start custom stuff -->
 
   <section id="story-area">
-    <div class="row" style="margin: auto;padding:80px 0px;background-image: linear-gradient(90deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 50%),
+    <div class="row" style="margin: auto;padding:150px 0px;background-image: linear-gradient(90deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 50%),
                     url(<?php echo $story_photo; ?>);background-repeat:no-repeat;background-size:cover;background-position:center;">
       <div class="container white">
       <div class="col-md-6" style="padding:0px">
@@ -173,8 +173,8 @@ get_header(); ?>
         
                             $story_title = get_the_title($related_story->ID);
                             $story_link = get_the_permalink($related_story->ID);
-                            // quote is a custom field
-                            $quote = get_field($related_story->ID,'quote');
+                            // sentence_summary is a custom field
+                            $sentence_summary = get_field($related_story->ID,'sentence_summary');
                             $name = get_field($related_story->ID,'name');
         ?>
 
@@ -187,7 +187,7 @@ get_header(); ?>
                         <div class="story-details">
                             <h3><?php echo $name; ?></h3>
                             <p>
-                                <?php echo $quote; ?>
+                                <?php echo $sentence_summary; ?>
                             </p>
                         </div>
                         <div class="story-category-parent">

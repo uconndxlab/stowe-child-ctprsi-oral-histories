@@ -117,8 +117,8 @@ $oral_histories = new WP_Query($args);
                     $story_title = get_the_title();
                     $story_content = get_the_excerpt();
                     $story_link = get_the_permalink();
-                    // quote is a custom field
-                    $quote = get_field('quote');
+                    // sentence_summary is a custom field
+                    $sentence_summary = get_field('sentence_summary');
                     $name = get_field('name');
 
 
@@ -133,8 +133,8 @@ $oral_histories = new WP_Query($args);
                         </div>
                         <div class="story-details">
                             <h3><?php echo $name; ?></h3>
-                            <p style="font-style:italic">
-                                <?php echo $quote; ?>
+                            <p>
+                                <?php echo $sentence_summary; ?>
                             </p>
                             <p><?php echo $story_content; ?></p>
                         </div>
